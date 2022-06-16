@@ -12,7 +12,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val rollButton: Button = findViewById(R.id.roll_button)
+        val countUpButton: Button = findViewById(R.id.count_up)
         rollButton.setOnClickListener { rollDice() }
+        countUpButton.setOnClickListener { countUp() }
     }
     private fun rollDice() {
         // Toast.makeText(this, "button clicked",
@@ -21,5 +23,18 @@ class MainActivity : AppCompatActivity() {
         val randomInt = (1..6).random()
         val resultText: TextView = findViewById(R.id.result_text)
         resultText.text = randomInt.toString()
+    }
+    private fun countUp() {
+        val resultText: TextView = findViewById(R.id.result_text)
+        if (resultText.text.toString() == "Hello World!") {
+            resultText.text = "1"
+        } else {
+            var resultTextInt = Integer.parseInt(resultText.text.toString())
+
+            if (resultTextInt < 6) {
+                resultTextInt ++
+                resultText.text = resultTextInt.toString()
+            }
+        }
     }
 }
